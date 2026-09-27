@@ -1,0 +1,20 @@
+{
+  "deploymentEnabled": true,
+  "chainId": 11155111,
+  "network": "sepolia",
+  "contract": "src/AllocationCalculator.sol:AllocationCalculator",
+  "compilerVersion": "0.8.24",
+  "optimizerRuns": 200,
+  "evmVersion": "paris",
+  "expectedRuntimeBytes": 1877,
+  "expectedRuntimeKeccak256": "0xaf849b2b82140da098ca0f23637bafca2f07f42ac2adee465f31873d019d0273",
+  "constructorArguments": [],
+  "constructorArgumentsEncoded": "0x",
+  "valueWei": "0",
+  "status": "not_deployed_missing_funded_signer",
+  "contractAddress": null,
+  "transactionHash": null,
+  "explorerLink": null,
+  "sourceVerified": false,
+  "note": "No deployment transaction has been submitted. No funded signer or RPC configuration was supplied. Public probes to ethereum-sepolia-rpc.publicnode.com and rpc.sepolia.org returned HTTP 403. Local tests are not an on-chain deployment."
+}
