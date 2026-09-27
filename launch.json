@@ -1,0 +1,17 @@
+{
+  "kind": "evm_project",
+  "token": {
+    "contract": "AllocationCalculator",
+    "name": "Allocation Calculator",
+    "symbol": "CALC",
+    "decimals": 0
+  },
+  "contracts": [],
+  "pool": {
+    "pairedCurrency": "0x0000000000000000000000000000000000000000",
+    "fee": 3000,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "notes": "INCOMPLETE INTEGRATION: the accepted tree contains AllocationCalculator and the internal FullMath library, but no ERC-20 token. The schema-required token slot names the existing AllocationCalculator; this is not a claim that it implements a token. The name, symbol and decimals are manifest display values only: the calculator has no corresponding getters, supply, balances or transfer function. Consequently this document meets the supplied JSON shape but cannot satisfy the protected token or project supply checks and is not ready for factory deployment. An accepted launch token or a supported token-free manifest format is required to resolve this incompatibility; creating a token is outside this assignment and conflicts with the project brief. The contracts list is empty to avoid naming the same implementation twice; this does not describe a working token-only launch. AllocationCalculator is src/AllocationCalculator.sol:AllocationCalculator, with an implicit nonpayable constructor, arguments [] and ABI encoding 0x. It has no owner, roles, dependencies requiring deployment, initialization calls, external calls or transfers. FullMath is internal and needs no separate deployment. The pool fields are the supplied native-currency defaults with no hook, not evidence of an existing pool. Allocation accepts any uint256 amount and 1..16 distinct nonzero recipients with positive uint256 weights whose sum fits uint256. It computes exact floor(amount*weight/totalWeight) using a 512-bit mulDiv and exact mulmod remainders; leftover units go to descending remainders, with ties favoring the original index. For A*w[i]=T*q[i]+r[i], summing gives U=A-sum(q)=sum(r)/T with 0<=U<n. Exactly U entries receive one extra unit, so sum(outputs)=A, including A=uint256.max. Demo recipients are 0x0000000000000000000000000000000000001001, 0x0000000000000000000000000000000000001002 and 0x0000000000000000000000000000000000001003; amount 10 and weights [1,2,3] return [2,3,5]. Solidity is pinned to 0.8.24. With Foundry and solc 0.8.24 installed, reproduce using forge build --offline and forge test --offline; no fetched Solidity or test dependencies are needed. README.md documents behavior, conservation, overflow, tiny amounts, ties and permutations. Deployment is ON in the accepted script and deployment record, restricted there to Sepolia chain 11155111. deployments/sepolia.json records no deployment: address, transaction hash and explorer link are null. No transaction or live bytecode verification is claimed here. A working RPC and funded test signer remain necessary. This manifest adds no deployment authority, signer, privileged wallet or mainnet configuration. Unit tests and a mathematical argument are not exhaustive formal verification; the pinned Solidity 0.8.26 token-launch harness is separate from the project's Solidity 0.8.24 tests."
+}
